@@ -121,7 +121,7 @@ body{
         left: 35%;
         background-color: white;
     }
-    .popup2{
+    #popup2{
         width: 400px;
         height: 200px;
         border: 2px solid red;
@@ -133,6 +133,7 @@ body{
         top: 35%;
         left: 35%;
         background-color: white;
+        z-index: +2;
     }
     
     .title{
