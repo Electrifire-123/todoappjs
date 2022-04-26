@@ -36,22 +36,23 @@ body{
         background-color: black;
     }
 
-    .addBtn{
+    .child i{
         color: red;
-        position: relative;
-        top: 185px;
-        left: 80px;
+        font-size: 1.5rem;
         cursor: pointer;
     }
+.addBtn{
+    position: relative;
+    left: 170px;
+    top: 180px;
+    width: 10px;
+}
 
-    .delBtn{
-        color: red;
-        position: relative;
-        top: 171px;
-        left: 60px;
-        z-index: +1;
-        cursor: pointer;
-
+.delBtn{
+    position: relative;
+    left: 145px;
+    top: 160px;
+    width: 10px;
     }
 
 .child h2{
@@ -165,3 +166,23 @@ body{
 
     }
     
+    .grandChild{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    .grandChild span{
+        font-weight: 500;
+        padding: 2px;
+        margin-right: 8px;
+    }
+
+    .grandChild button{
+        background-color: dodgerblue;
+        border: none;
+        border-radius: 5px;
+        color: white;
+        padding: 2px;
+    }

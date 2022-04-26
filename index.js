@@ -15,6 +15,7 @@ function changeHere() {
 function addtaskonScreen() {
         const element=document.createElement("div")
         element.setAttribute("class","child")
+        element.setAttribute("id", "child");
         element.innerHTML=`<h2>${tasklist[tasklist.length-1].taskname}</h2>`
 
         const ExistingElement=document.getElementById("parent")
@@ -28,13 +29,42 @@ function addtaskonScreen() {
         addBtn.setAttribute("class", "addBtn fa-solid fa-circle-plus");
         addBtn.setAttribute("id","addBtn")
         element.appendChild(addBtn);
-        // addBtn.onclick = function() { call2ndPopup() };
-        
-        
-        
         const delBtn = document.createElement("i");
         delBtn.setAttribute("class", "delBtn fa-solid fa-trash");
         element.appendChild(delBtn);
+        
+        addBtn.addEventListener('click',() => {
+                call2ndPopup();
+        })
+        delBtn.addEventListener('click',()=>{
+                ExistingElement.removeChild(element);
+        })
+
+        const addTaskBtn = document.getElementById("addTaskBtn");
+
+        addTaskBtn.addEventListener('click',() => {
+                changeHeretoo();
+        })
+
+        function changeHeretoo(){
+                const item = document.getElementById("item").value
+                const tempObject={
+                        itemName:item
+                }
+                items.push(tempObject);
+                console.log(items);
+        
+                addtaskon2ndScreen()
+        }
+        function addtaskon2ndScreen(){
+                const element2=document.createElement("div");
+                element2.setAttribute("class","grandChild");
+                element2.innerHTML=`<span>${items[items.length-1].itemName}</span><button>Mark Done</button>`;
+        
+                element.appendChild(element2);
+        
+                hide2ndPopup();
+        }
 
         hidePopup();
         
@@ -51,8 +81,8 @@ function hidePopup(){
         let blur = document.getElementById("main");
         blur.style.filter = "blur(0px)";
 
-        let addBtnFn = document.getElementById("addBtn")
-        addBtnFn.addEventListener("click", call2ndPopup);
+        // let addBtnFn = document.getElementById("addBtn")
+        // addBtnFn.addEventListener("click", call2ndPopup);
 
         
 }
@@ -74,27 +104,28 @@ function call2ndPopup(){
 }
 
 const items = [];
-function changeHeretoo(){
-        const item=document.getElementById("item").value
-        const tempObject={
-                itemName:item
-        }
-        items.push(tempObject);
-        console.log(items);
 
-        addtaskon2ndScreen()
-}
+// function changeHeretoo(){
+//         const item = document.getElementById("item").value
+//         const tempObject={
+//                 itemName:item
+//         }
+//         items.push(tempObject);
+//         console.log(items);
 
-function addtaskon2ndScreen(){
-        const element=document.createElement("div");
-        element.setAttribute("class","grandChild");
-        element.innerHTML=`<span>${items[items.length-1].itemName}</span><button>Mark Done</button>`;
+//         addtaskon2ndScreen()
+// }
 
-        const ExistingElement=document.getElementById("child");
-        ExistingElement.appendChild(element);
+// function addtaskon2ndScreen(){
+//         const element=document.createElement("div");
+//         element.setAttribute("class","grandChild");
+//         element.innerHTML=`<span>${items[items.length-1].itemName}</span><button>Mark Done</button>`;
 
-        hide2ndPopup();
-}
+//         const ExistingElement=document.getElementById("child");
+//         ExistingElement.appendChild(element);
+
+//         hide2ndPopup();
+// }
 
 function hide2ndPopup(){
         let popup2 = document.getElementById("popup2");
