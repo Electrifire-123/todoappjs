@@ -1,74 +1,78 @@
 const tasklist= [];
+const items = [];
+let addtaskonScreen;
+let changeHere;
+// const btnToAddTaskOnScreen = document.getElementById
+const  addTaskBtn = document.getElementById("addTaskBtn");
+        
+        function callPopup(){
+                let popup = document.getElementById("popup")
+                popup.style.display = "flex";
+        
+                let blur = document.getElementById("main");
+                blur.style.filter = "blur(5px)";
 
-function changeHere() {
-        const name=document.getElementById("name").value
-        const tempObject={
-                taskname:name
+                changeHere = function () {
+                        const name=document.getElementById("name").value
+                        const tempObject={
+                                taskname:name
+                        }
+                        tasklist.push(tempObject);
+                        console.log(tasklist);
+                        
+                        
+                        
+                                const element=document.createElement("div")
+                                element.setAttribute("class","child")
+                                // element.setAttribute("id", "child");
+                                element.innerHTML=`<h2>${tasklist[tasklist.length-1].taskname}</h2>`
+                        
+                                const ExistingElement=document.getElementById("parent")
+                                ExistingElement.appendChild(element)
+                        
+                                const hr = document.createElement("hr")
+                                hr.setAttribute("class", "hr");
+                                element.appendChild(hr);
+                        
+                                const addBtn = document.createElement("i");
+                                addBtn.setAttribute("class", "addBtn fa-solid fa-circle-plus");
+                                addBtn.setAttribute("id","addBtn")
+                                addBtn.setAttribute
+                                element.appendChild(addBtn);
+                                const delBtn = document.createElement("i");
+                                delBtn.setAttribute("class", "delBtn fa-solid fa-trash");
+                                
+                                element.appendChild(delBtn);
+                                hidePopup();
+                                addBtn.onclick = function (){
+                                        let pop = document.getElementById("popup2");
+                                        pop.style.display = "flex";
+                                
+                                        let blur = document.getElementById("main");
+                                        blur.style.filter = "blur(5px)";
+                                        
+                                        addTaskBtn.onclick = function (){
+                                                const item = document.getElementById("item").value
+                                                const tempObject1={
+                                                        itemName:item
+                                                }
+                                                        items.push(tempObject1);
+                                                        console.log(items);
+                                        
+                                                
+                                                
+                                                        const element2=document.createElement("div");
+                                                        element2.setAttribute("class","grandChild");
+                                                        element2.innerHTML=`<span>${items[items.length-1].itemName}</span><button>Mark Done</button>`;
+                                                
+                                                        // const ExistingElement=document.getElementById("child");
+                                                        element.appendChild(element2);
+                                                
+                                                        hide2ndPopup();
+                                                }
+                                        }
+                                }
         }
-        tasklist.push(tempObject);
-        console.log(tasklist);
-
-        addtaskonScreen()
-
-}
-
-function addtaskonScreen() {
-        const element=document.createElement("div")
-        element.setAttribute("class","child")
-        element.setAttribute("id", "child");
-        element.innerHTML=`<h2>${tasklist[tasklist.length-1].taskname}</h2>`
-
-        const ExistingElement=document.getElementById("parent")
-        ExistingElement.appendChild(element)
-
-        const hr = document.createElement("hr")
-        hr.setAttribute("class", "hr");
-        element.appendChild(hr);
-
-        const addBtn = document.createElement("i");
-        addBtn.setAttribute("class", "addBtn fa-solid fa-circle-plus");
-        addBtn.setAttribute("id","addBtn")
-        element.appendChild(addBtn);
-        const delBtn = document.createElement("i");
-        delBtn.setAttribute("class", "delBtn fa-solid fa-trash");
-        element.appendChild(delBtn);
-        
-        addBtn.addEventListener('click',() => {
-                call2ndPopup();
-        })
-        delBtn.addEventListener('click',()=>{
-                ExistingElement.removeChild(element);
-        })
-
-        const addTaskBtn = document.getElementById("addTaskBtn");
-
-        addTaskBtn.addEventListener('click',() => {
-                changeHeretoo();
-        })
-
-        function changeHeretoo(){
-                const item = document.getElementById("item").value
-                const tempObject={
-                        itemName:item
-                }
-                items.push(tempObject);
-                console.log(items);
-        
-                addtaskon2ndScreen()
-        }
-        function addtaskon2ndScreen(){
-                const element2=document.createElement("div");
-                element2.setAttribute("class","grandChild");
-                element2.innerHTML=`<span>${items[items.length-1].itemName}</span><button>Mark Done</button>`;
-        
-                element.appendChild(element2);
-        
-                hide2ndPopup();
-        }
-
-        hidePopup();
-        
-}
 
 
 function hidePopup(){
@@ -87,46 +91,6 @@ function hidePopup(){
         
 }
 
-function callPopup(){
-        let popup = document.getElementById("popup")
-        popup.style.display = "flex";
-
-        let blur = document.getElementById("main");
-        blur.style.filter = "blur(5px)";
-}
-
-function call2ndPopup(){
-        let pop = document.getElementById("popup2");
-        pop.style.display = "flex";
-
-        let blur = document.getElementById("main");
-        blur.style.filter = "blur(5px)";
-}
-
-const items = [];
-
-// function changeHeretoo(){
-//         const item = document.getElementById("item").value
-//         const tempObject={
-//                 itemName:item
-//         }
-//         items.push(tempObject);
-//         console.log(items);
-
-//         addtaskon2ndScreen()
-// }
-
-// function addtaskon2ndScreen(){
-//         const element=document.createElement("div");
-//         element.setAttribute("class","grandChild");
-//         element.innerHTML=`<span>${items[items.length-1].itemName}</span><button>Mark Done</button>`;
-
-//         const ExistingElement=document.getElementById("child");
-//         ExistingElement.appendChild(element);
-
-//         hide2ndPopup();
-// }
-
 function hide2ndPopup(){
         let popup2 = document.getElementById("popup2");
         popup2.style.display = "none";
@@ -134,4 +98,3 @@ function hide2ndPopup(){
         let blur = document.getElementById("main");
         blur.style.filter = "blur(0px)";
 }
-
